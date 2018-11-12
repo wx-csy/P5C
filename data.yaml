@@ -1,0 +1,7 @@
+- name: 01-sample
+  src: 01-sample.txt
+- name: 02-sample
+  src: 02-sample.txt
+- name: 03-random
+  src: rand1
+  flags: 3 1 1 2 2 1 2

@@ -1,0 +1,19 @@
+$(PACKAGE_DIR)/data/01-sample.in : $(SOURCE_DIR)/data/01-sample.txt
+	@mkdir -p $(dir $@)
+	@echo + [CP] $@
+	@$(CP) $< $@
+
+$(PACKAGE_DIR)/data/02-sample.in : $(SOURCE_DIR)/data/02-sample.txt
+	@mkdir -p $(dir $@)
+	@echo + [CP] $@
+	@$(CP) $< $@
+
+$(PACKAGE_DIR)/data/03-random.in : $(BUILD_DIR)/data/rand1
+	@mkdir -p $(dir $@)
+	@echo + [GEN] $@
+	@$(BUILD_DIR)/data/rand1 3 1 1 2 2 1 2 < $< > $@
+
+DATA_TARGETS = \
+  $(PACKAGE_DIR)/data/01-sample.ans \
+  $(PACKAGE_DIR)/data/02-sample.ans \
+  $(PACKAGE_DIR)/data/03-random.ans
