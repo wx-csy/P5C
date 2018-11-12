@@ -20,15 +20,7 @@ $(BUILD_DIR)/% : $(SOURCE_DIR)/%.cpp
 	@echo + [C++] $@
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 
-# copy manually written test cases
-
-$(PACKAGE_DIR)/%.in : %.in.txt
-	@mkdir -p $(dir $@)
-	@echo + [CP] $@
-	@$(CP) $< $@
-
 # generate answer file
-
 %.ans : %.in $(BUILD_DIR)/std
 	@mkdir -p $(dir $@)
 	@echo + [GEN] $@
