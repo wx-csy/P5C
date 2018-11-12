@@ -3,7 +3,7 @@ BUILD_DIR = build
 SOURCE_DIR = src
 
 CXX = g++
-CXXFLAGS += -std=c++11 -g -O2 -Wall -pipe
+CXXFLAGS += -std=c++11 -g -O2 -Wall -pipe -I./include
 
 CP = cp
 

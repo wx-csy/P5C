@@ -1,8 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+long long seed;
+int n;
+
 int main(int argc, char *argv[]) {
-  for (int i = 1; i < argc; i++) 
-    printf("%s\n", argv[i]);
+  seed = atoll(argv[1]);
+  n = atoi(argv[2]);
+  mt19937 gen(seed);
+  printf("%d\n", n);
+  while (n--) {
+    printf("%d %d\n", int(gen() % 1000000), int(gen() % 1000000));
+  }
   return 0;
 }

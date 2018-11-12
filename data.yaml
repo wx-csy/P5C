@@ -4,4 +4,7 @@
   src: 02-sample.txt
 - name: 03-random
   src: rand1
-  flags: 3 1 1 2 2 1 2
+  flags: 51795452 10
+- name: 04-random
+  src: rand1
+  flags: 51795453 10

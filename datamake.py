@@ -20,6 +20,8 @@ def gen_testpoint(testpoint) :
         target += "$(SOURCE_DIR)/data/" + src
     else : 
         target += "$(BUILD_DIR)/data/" + src
+        
+    target += " $(BUILD_DIR)/validator"
 
     mk.append(target)
     mk.append("\t@mkdir -p $(dir $@)")
@@ -31,6 +33,8 @@ def gen_testpoint(testpoint) :
         mk.append("\t@echo + [GEN] $@")
         mk.append("\t@$(BUILD_DIR)/data/" + src + " " + flags + " < $< > $@")
     
+    mk.append("\t@echo + [VALIDATE] $@")
+    mk.append("\t@$(BUILD_DIR)/validator < $@")
     mk.append("")
     return '\n'.join(mk)
 
