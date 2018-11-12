@@ -1,29 +1,29 @@
 $(PACKAGE_DIR)/data/01-sample.in : $(SOURCE_DIR)/data/01-sample.txt $(BUILD_DIR)/validator
 	@mkdir -p $(dir $@)
-	@echo + [CP] $@
+	@echo + [CP]\\t\\t$@
 	@$(CP) $< $@
-	@echo + [VALIDATE] $@
+	@echo + [VALIDATE]\\t$@
 	@$(BUILD_DIR)/validator < $@
 
 $(PACKAGE_DIR)/data/02-sample.in : $(SOURCE_DIR)/data/02-sample.txt $(BUILD_DIR)/validator
 	@mkdir -p $(dir $@)
-	@echo + [CP] $@
+	@echo + [CP]\\t\\t$@
 	@$(CP) $< $@
-	@echo + [VALIDATE] $@
+	@echo + [VALIDATE]\\t$@
 	@$(BUILD_DIR)/validator < $@
 
 $(PACKAGE_DIR)/data/03-random.in : $(BUILD_DIR)/data/rand1 $(BUILD_DIR)/validator
 	@mkdir -p $(dir $@)
-	@echo + [GEN] $@
+	@echo + [GEN]\\t\\t$@
 	@$(BUILD_DIR)/data/rand1 51795452 10 < $< > $@
-	@echo + [VALIDATE] $@
+	@echo + [VALIDATE]\\t$@
 	@$(BUILD_DIR)/validator < $@
 
 $(PACKAGE_DIR)/data/04-random.in : $(BUILD_DIR)/data/rand1 $(BUILD_DIR)/validator
 	@mkdir -p $(dir $@)
-	@echo + [GEN] $@
+	@echo + [GEN]\\t\\t$@
 	@$(BUILD_DIR)/data/rand1 51795453 10 < $< > $@
-	@echo + [VALIDATE] $@
+	@echo + [VALIDATE]\\t$@
 	@$(BUILD_DIR)/validator < $@
 
 DATA_TARGETS = \

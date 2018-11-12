@@ -17,13 +17,13 @@ default : $(OBJS)
 # generate c++ executables
 $(BUILD_DIR)/% : $(SOURCE_DIR)/%.cpp
 	@mkdir -p $(dir $@)
-	@echo + [C++] $@
+	@echo + [C++]\\t\\t$@
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 
 # generate answer file
 %.ans : %.in $(BUILD_DIR)/std
 	@mkdir -p $(dir $@)
-	@echo + [GEN] $@
+	@echo + [GEN]\\t\\t$@
 	@$(BUILD_DIR)/std < $< > $@
 	
 clean :

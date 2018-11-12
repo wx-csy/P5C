@@ -27,13 +27,13 @@ def gen_testpoint(testpoint) :
     mk.append("\t@mkdir -p $(dir $@)")
 
     if is_manual :
-        mk.append("\t@echo + [CP] $@")
+        mk.append("\t@echo + [CP]\\\\t\\\\t$@")
         mk.append("\t@$(CP) $< $@")
     else :
-        mk.append("\t@echo + [GEN] $@")
+        mk.append("\t@echo + [GEN]\\\\t\\\\t$@")
         mk.append("\t@$(BUILD_DIR)/data/" + src + " " + flags + " < $< > $@")
     
-    mk.append("\t@echo + [VALIDATE] $@")
+    mk.append("\t@echo + [VALIDATE]\\\\t$@")
     mk.append("\t@$(BUILD_DIR)/validator < $@")
     mk.append("")
     return '\n'.join(mk)
