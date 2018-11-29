@@ -7,7 +7,7 @@ def gen_testpoint(testpoint) :
     name = testpoint["name"]
     src = testpoint["src"]
     is_manual = src.endswith(".txt")
-    flags = testpoint.get("flags", "")
+    flags = str(testpoint.get("flags", ""))
 
     mk = []
     target = "$(PACKAGE_DIR)/data/" + name + ".in"

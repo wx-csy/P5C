@@ -22,7 +22,7 @@ $(PACKAGE_DIR)/data/03-random.in : $(BUILD_DIR)/data/rand1 $(BUILD_DIR)/validato
 $(PACKAGE_DIR)/data/04-random.in : $(BUILD_DIR)/data/rand1 $(BUILD_DIR)/validator
 	@mkdir -p $(dir $@)
 	@echo + [GEN]\\t\\t$@
-	@$(BUILD_DIR)/data/rand1 51795453 10 < $< > $@
+	@$(BUILD_DIR)/data/rand1 51795453 200000 < $< > $@
 	@echo + [VALIDATE]\\t$@
 	@$(BUILD_DIR)/validator < $@
 

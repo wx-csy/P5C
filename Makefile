@@ -12,7 +12,7 @@ OBJS = $(SRCS:$(SOURCE_DIR)/%.cpp=$(BUILD_DIR)/%)
 
 .PHONY : default clean datagen
 
-default : $(OBJS)
+default : datagen
 
 # generate c++ executables
 $(BUILD_DIR)/% : $(SOURCE_DIR)/%.cpp
@@ -36,4 +36,4 @@ Makefile.data : datamake.py data.yaml
 -include Makefile.data
 
 datagen: $(DATA_TARGETS)
-	
+.DELETE_ON_ERROR : $(DATA_TARGETS)

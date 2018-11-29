@@ -7,4 +7,4 @@
   flags: 51795452 10
 - name: 04-random
   src: rand1
-  flags: 51795453 10
+  flags: 51795453 200000
