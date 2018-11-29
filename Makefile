@@ -20,6 +20,13 @@ $(BUILD_DIR)/% : $(SOURCE_DIR)/%.cpp
 	@echo + [C++]\\t\\t$@
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 
+# copy python scripts
+$(BUILD_DIR)/%.py : $(SOURCE_DIR)/%.py
+	@mkdir -p $(dir $@)
+	@echo + [CP]\\t\\t$@
+	@$(CP) $< $@
+	@chmod +x $@
+
 # generate answer file
 %.ans : %.in $(BUILD_DIR)/std
 	@mkdir -p $(dir $@)
@@ -29,6 +36,7 @@ $(BUILD_DIR)/% : $(SOURCE_DIR)/%.cpp
 clean :
 	rm -rf $(BUILD_DIR)
 	rm -rf $(PACKAGE_DIR)
+	rm -r Makefile.data
 
 Makefile.data : datamake.py data.yaml
 	./datamake.py > Makefile.data
