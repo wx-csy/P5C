@@ -1,0 +1,5 @@
+#!/bin/bash
+SOURCE="$1" ; shift
+DEST="$1" ; shift
+cp $SOURCE $DEST
+chmod +x $DEST
