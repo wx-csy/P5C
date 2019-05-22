@@ -9,7 +9,7 @@ def add_lang(shortname, name) :
     meta[shortname] = {'name' : name}
     com.save_meta(meta)
     shutil.copytree('../resource/lang-template', shortname)
-    com.commit("add language '{0}' : {1}".format(shortname, name), shortname);
+    com.commit("add language '{0}' : {1}".format(shortname, name));
 
 def remove_lang(shortname) :
     meta = com.load_meta()
