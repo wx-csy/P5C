@@ -1,5 +1,5 @@
 from . import common as com
-import os, shutil
+import os, shutil, subprocess
 
 def add_lang(shortname) :
     com.checkparam(shortname)
@@ -14,6 +14,8 @@ def add_lang(shortname) :
     }
     com.save_meta(meta)
     shutil.copytree('../resource/lang-template', shortname)
+    subprocess.check_call([com.config['editor'], shortname + '/compile'])
+    subprocess.check_call([com.config['editor'], shortname + '/run'])
     com.commit("add language '{0}' : {1}".format(shortname, name));
 
 def remove_lang(shortname) :
