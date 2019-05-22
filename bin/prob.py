@@ -10,7 +10,7 @@ def add_prob(shortname) :
     com.save_meta(meta)
     shutil.copytree('../resource/prob-template', shortname)
     subprocess.check_call([com.config['editor'], shortname + '/problem.yaml'])
-    com.commit("add problem '{0}' : {1}".format(shortname, name));
+    com.commit("add problem '{0}'".format(shortname));
 
 def remove_prob(shortname) :
     meta = com.load_meta()
@@ -22,8 +22,9 @@ def remove_prob(shortname) :
     com.commit("remove problem '{0}'".format(shortname));
 
 COMMANDS = {
-    'add' :     add_lang,
-    'rm'  :     remove_lang,
+    'add' :     add_prob,
+    'rm'  :     remove_prob,
+    'remove' :  remove_prob,
 }
 
 def main(cmd, *args) :

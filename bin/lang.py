@@ -32,6 +32,7 @@ def remove_lang(shortname) :
 COMMANDS = {
     'add' :     add_lang,
     'rm'  :     remove_lang,
+    'remove' :  remove_lang,
 }
 
 def main(cmd, *args) :

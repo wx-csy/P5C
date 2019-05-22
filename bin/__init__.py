@@ -1,7 +1,10 @@
-from . import lang
+from . import lang, prob
 
 MODULES = {
-    'lang' :    lang.main
+    'lang' :        lang.main,
+    'language' :    lang.main,
+    'prob' :        prob.main,
+    'problem' :     prob.main,
 }
 
 def main(cmd, *args) :
