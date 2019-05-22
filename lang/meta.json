@@ -1,1 +1,10 @@
-{}
+{
+  "python": {
+    "name": "Python",
+    "ext": [
+      ".py",
+      ".py2",
+      ".py3"
+    ]
+  }
+}
