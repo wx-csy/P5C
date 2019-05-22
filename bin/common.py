@@ -44,3 +44,5 @@ def load_meta(fname='meta.json', default=[]) :
 
 def save_meta(meta, fname='meta.json') :
     json.dump(meta, open(fname, 'w'), indent=2)
+
+config=load_meta('config.json', default=dict())

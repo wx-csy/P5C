@@ -6,5 +6,11 @@
       ".py2",
       ".py3"
     ]
+  },
+  "java": {
+    "name": "Java",
+    "ext": [
+      ".java"
+    ]
   }
 }
