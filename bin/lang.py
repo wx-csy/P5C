@@ -8,8 +8,10 @@ def add_lang(shortname) :
     meta = com.load_meta(default=dict())
     if shortname in meta :
         com.die("language '{0}' already exists!".format(shortname))
-    meta[shortname] = {'name' : name}
-    meta[shortname] = {'ext' : ext}
+    meta[shortname] = {
+        'name' : name, 
+        'ext' : ext,
+    }
     com.save_meta(meta)
     shutil.copytree('../resource/lang-template', shortname)
     com.commit("add language '{0}' : {1}".format(shortname, name));
@@ -18,10 +20,10 @@ def remove_lang(shortname) :
     meta = com.load_meta()
     if shortname not in meta :
         com.die("language '{0}' does not exist!".format(shortname))
-    name = meta.pop(shortname)['name']
+    meta.pop(shortname)
     com.save_meta(meta)
     shutil.rmtree(shortname)
-    com.commit("remove language '{0}' : {1}".format(shortname, name));
+    com.commit("remove language '{0}'".format(shortname));
 
 COMMANDS = {
     'add' :     add_lang,
