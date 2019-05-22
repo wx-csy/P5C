@@ -2,9 +2,6 @@
   "py": {
     "name": "Python"
   },
-  "cpp": {
-    "name": "C++"
-  },
   "java": {
     "name": "Java"
   }

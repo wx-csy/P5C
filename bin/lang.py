@@ -1,14 +1,15 @@
 from . import common as com
 import os, shutil
 
-def add_lang(shortname, name=None) :
+def add_lang(shortname) :
     com.checkparam(shortname)
-    if not name : 
-        name = com.readparam('Full Name: ', default=shortname)
+    name = com.readparam('Full Name: ', default=shortname)
+    ext = com.readparam('File Extension (space-separated): ', default='').split()
     meta = com.load_meta(default=dict())
     if shortname in meta :
         com.die("language '{0}' already exists!".format(shortname))
     meta[shortname] = {'name' : name}
+    meta[shortname] = {'ext' : ext}
     com.save_meta(meta)
     shutil.copytree('../resource/lang-template', shortname)
     com.commit("add language '{0}' : {1}".format(shortname, name));
