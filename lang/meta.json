@@ -1,8 +1,19 @@
 {
-  "py": {
-    "name": "Python"
+  "python": {
+    "name": "Python",
+    "ext": [
+      ".py",
+      ".py2",
+      ".py3"
+    ]
   },
-  "c++": {
-    "name": "sad"
+  "cpp": {
+    "name": "C++",
+    "ext": [
+      ".cpp",
+      ".cc",
+      ".cxx",
+      ".c++"
+    ]
   }
 }

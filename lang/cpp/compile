@@ -3,5 +3,4 @@
 DEST="$1"; shift
 SRC="$1"; shift
 
-cp $SRC $DEST
-chmod +x $DEST
+g++ --std=c++14 -O2 -Wall -ggdb -o $DEST $SRC
