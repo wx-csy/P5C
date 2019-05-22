@@ -4,5 +4,8 @@
   },
   "cpp": {
     "name": "C++"
+  },
+  "java": {
+    "name": "Java"
   }
 }
