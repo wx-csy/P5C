@@ -6,7 +6,7 @@ printe = lambda *args : print(*args, file=sys.stderr)
 
 def checkparam(s, pat=IDENTIFIER_PAT) :
     if not re.fullmatch(pat, s) :
-        die("input should match pattern '{0}'".format(pattern))
+        die("input should match pattern '{0}'".format(pat))
 
 def readparam(prompt='', pat=None, default=None) :
     flag = False
@@ -19,8 +19,8 @@ def readparam(prompt='', pat=None, default=None) :
             else :
                 printe("input should not be empty!")
         elif pat is not None :
-            if not re.match(pat, s) :
-                printe("input should match pattern '{0}'".format(pattern))
+            if not re.fullmatch(pat, s) :
+                printe("input should match pattern '{0}'".format(pat))
             else :
                 flag = True
         else :
