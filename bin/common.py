@@ -4,8 +4,8 @@ IDENTIFIER_PAT = '[a-zA-Z]\\w*'
 
 printe = lambda *args : print(*args, file=sys.stderr)
 
-def checkparam(s, pat = IDENTIFIER_PAT) :
-    if not re.match(pat, s) :
+def checkparam(s, pat=IDENTIFIER_PAT) :
+    if not re.fullmatch(pat, s) :
         die("input should match pattern '{0}'".format(pattern))
 
 def readparam(prompt='', pat=None, default=None) :
