@@ -1,6 +1,0 @@
-#!/bin/sh
-# this is the script used to compile the source code
-DEST="$1"; shift
-SRC="$1"; shift
-
-g++ --std=c++14 -O2 -ggdb -Wall -o $DEST $SRC
