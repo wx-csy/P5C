@@ -1,8 +1,10 @@
 from . import common as com
 import os, shutil
 
-def add_lang(shortname, name) :
-    if not name : name = shortname
+def add_lang(shortname, name=None) :
+    com.checkparam(shortname)
+    if not name : 
+        name = com.readparam('Full Name: ', default=shortname)
     meta = com.load_meta(default=dict())
     if shortname in meta :
         com.die("language '{0}' already exists!".format(shortname))

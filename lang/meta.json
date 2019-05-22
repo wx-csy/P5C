@@ -1,5 +1,8 @@
 {
   "py": {
     "name": "Python"
+  },
+  "c++": {
+    "name": "sad"
   }
 }
