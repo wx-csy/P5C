@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+import csv, sys
+from io import StringIO
+
+tsvwriter = csv.writer(sys.stdout, delimiter='\t', 
+    quoting=csv.QUOTE_MINIMAL)
+
+def add_case(casename, generator, flag='', sample='', desc='') :
+    tsvwriter.writerow((casename, generator, flag, sample, desc))
+
+def add_cases(cases) : 
+    for case in cases : add_case(*case)
+
+add_case('001-sample', 'sample.txt', sample=True)
+
+for i in range(10, 20) :
+    add_case('%03d-sample' % i, 'smp.py', i, True, 'big data')

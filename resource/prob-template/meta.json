@@ -1,0 +1,6 @@
+{
+    "name": "Hello, world",
+    "std": "std.cpp",
+    "validator": "validator.cpp",
+    "time-limit": 1
+}

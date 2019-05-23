@@ -1,0 +1,25 @@
+{
+  "cpp": {
+    "name": "C++",
+    "ext": [
+      ".cpp",
+      ".cc",
+      ".cxx",
+      ".c++"
+    ]
+  },
+  "python": {
+    "name": "Python",
+    "ext": [
+      ".py",
+      ".py3",
+      ".py2"
+    ]
+  },
+  "txt": {
+    "name": "Plain Text",
+    "ext": [
+      ".txt"
+    ]
+  }
+}
