@@ -7,6 +7,10 @@ pconf = None
 
 printe = lambda *args : print(*args, file=sys.stderr)
 
+def loadgconf() :
+    global gconf
+    gconf = load_meta(getroot() + "/config.json")
+
 def getroot() :
     path = pathlib.Path.cwd()
     this = './'

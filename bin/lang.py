@@ -11,8 +11,11 @@ def identify_source_lang(filename) :
             return lang
     return None
 
+def get_lang_dir(lang_shortname) :
+    return LANG_PATH + lang_shortname + '/'
+
 def get_compile_script(lang_shortname, src, dest) :
-    return ' '.join([LANG_PATH + lang_shortname + '/compile', 
+    return ' '.join([get_lang_dir(lang_shortname) + '/compile',
         shlex.quote(src), shlex.quote(dest)])
 
 def add_lang(shortname) :

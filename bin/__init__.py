@@ -1,4 +1,4 @@
-from . import lang, prob
+from . import lang, prob, cli
 from . import common
 from . import api
 
@@ -7,6 +7,8 @@ MODULES = {
     'language' :    lang.main,
     'prob' :        prob.main,
     'problem' :     prob.main,
+    'create' :       cli.create,
+
     'api.mksyn.datagen' : api.mksyn.datagen,
     'api.mksyn.databuild' : api.mksyn.databuild,
     'api.mksyn.solbuild' : api.mksyn.solbuild,

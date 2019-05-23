@@ -80,4 +80,3 @@ DATAGEN_INPUT_TARGETS += {0}
 \t@$< < {2} > $@
 DATAGEN_OUTPUT_TARGETS += {0}
 '''.format(dataans, stddest, datain, flag))
-
