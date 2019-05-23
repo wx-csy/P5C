@@ -1,0 +1,88 @@
+\documentclass[a4paper,12pt,twoside]{article}
+\usepackage[left=2.0cm, right=2.0cm, top=2.0cm, bottom=2.0cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{mathspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{verbatim}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\pagestyle{fancy}
+
+\ifdefined\divone
+    \newcommand{\divsel}[2]{#1}
+\else
+    \newcommand{\divsel}[2]{#2}
+\fi
+
+\chead{\large \textbf{2019 Nowcoder Multi-University Summer Camp, Round 7}}
+\lfoot{\Alph{ProblemNo}. \ProblemName}
+\cfoot{}
+\rfoot{\thepage}
+%\setCJKmainfont[BoldFont=SimHei,ItalicFont=KaiTi]{SimSun}
+\setmainfont[BoldFont=Arial Bold]{Arial}
+\setmonofont{Courier New}
+\setmathsfont(Latin){Times New Roman}
+
+\setlist{nosep}
+\newcommand{\ProblemName}{}
+\newcommand{\ProblemID}{}
+\newcounter{ProblemNo}
+\newcounter{ExampleNo}
+
+\newcommand{\exmpfilev}[1]{
+    \begin{minipage}[t]{0.47\linewidth} \vspace{0cm} \verbatiminput{#1} \vspace{0cm} \end{minipage}
+}
+\newcommand{\exmpv}[1]{
+    ~\\ [0.5cm]
+    \addtocounter{ExampleNo}{1}
+    \noindent
+    \begin{tabular}{p{0.48\linewidth}p{0.48\linewidth}}
+      \textbf{Sample Input \arabic{ExampleNo}} & \textbf{Sample Output \arabic{ExampleNo}} \\ \hline
+    \multicolumn{1}{|l|}{\exmpfilev{src/\ProblemID/#1.in}} & 
+    \multicolumn{1}{l|} {\exmpfilev{src/\ProblemID/#1.ans}} \\ \hline
+    \end{tabular}
+}
+\newcommand{\exmph}[1]{
+    ~\\ [0.5cm]
+    \addtocounter{ExampleNo}{1}
+    \noindent
+    \begin{tabular}{p{0.98\linewidth}}
+      \vspace{0cm}
+      \textbf{Sample Input \arabic{ExampleNo}} \\ \hline
+    \multicolumn{1}{|l|}{\exmpfilev{src/\ProblemID/#1.in}} \\ \hline
+      \vspace{0cm}
+      \textbf{Sample Output \arabic{ExampleNo}} \\ \hline
+    \multicolumn{1}{|l|} {\exmpfilev{src/\ProblemID/#1.ans}} \\ \hline
+    \end{tabular}
+}
+\newcommand{\problem}[1] {
+    \renewcommand{\ProblemID}{#1}
+    \input{contest/\ProblemID/statement/stat.tex}
+}
+
+\newenvironment{Problem}[2]{
+    \addtocounter{ProblemNo}{1}
+    \renewcommand{\ProblemName}{#1}
+    \setcounter{ExampleNo}{0}
+    \begin{center}
+        \huge{\Alph{ProblemNo}. \ProblemName} \\ [0.8cm]
+        \large{\textbf{Time Limit: #2}} \\ [1cm]
+    \end{center}
+}{
+    \clearpage
+    \ifodd\value{page}
+    \else
+    \vspace*{\fill}
+    \begin{center}\textbf{\Large this page intentionally left blank}\end{center}
+    \vspace*{\fill}
+    \clearpage
+    \fi
+}
+
