@@ -1,4 +1,0 @@
-#!/bin/sh
-# this is a script used to run the target
-DEST="$1"; shift
-exec $DEST

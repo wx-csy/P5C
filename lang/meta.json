@@ -8,18 +8,17 @@
       ".c++"
     ]
   },
-  "python": {
-    "name": "Python",
-    "ext": [
-      ".py",
-      ".py3",
-      ".py2"
-    ]
-  },
   "txt": {
     "name": "Plain Text",
     "ext": [
       ".txt"
+    ]
+  },
+  "py3": {
+    "name": "Python 3",
+    "ext": [
+      ".py",
+      ".py3"
     ]
   }
 }

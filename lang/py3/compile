@@ -3,5 +3,6 @@
 SRC="$1"; shift
 DEST="$1"; shift
 
-cp $SRC $DEST
-chmod +x $DEST
+echo '#!/usr/bin/env python3' > "$DEST"
+cat "$SRC" >> "$DEST"
+chmod +x "$DEST"
