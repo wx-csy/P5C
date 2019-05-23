@@ -11,11 +11,17 @@ def __get_data_dest(gen) :
 def __get_sol_dest(gen) :
     return 'build/solution/exec/' + gen + '.exec'
 
-def __get_data_in(gen) :
-    return 'build/data/gen/' + gen + '.in'
+def __get_data_in(name) :
+    return 'build/data/gen/' + name + '.in'
 
-def __get_data_ans(gen) :
-    return 'build/data/gen/' + gen + '.ans'
+def __get_data_ans(name) :
+    return 'build/data/gen/' + name + '.ans'
+
+def __get_sample_in(name) :
+    return 'build/data/sample/' + name + '.in'
+
+def __get_sample_ans(name) :
+    return 'build/data/sample/' + name + '.ans'
 
 def __get_validator_src() :
     return 'validator/' + com.pconf["validator"]
@@ -23,13 +29,22 @@ def __get_validator_src() :
 def __get_validator_dest() :
     return 'build/misc/validator.exec'
 
-def __build_exec(srclang, src, dest) :
+def __build_exec(srclang, src, dest, extra='') :
     print('''{0} : {1}
 \t@mkdir -p $(dir $@)
 \t@echo + [{2}] $@
 \t@{3}
+{4}
 '''.format(dest, src, srclang.upper(),
-        lang.get_compile_script(srclang, str(src), str(dest))))
+        lang.get_compile_script(srclang, str(src), str(dest)), extra))
+
+def __build_cp(src, dest, extra='') :
+    print('''{0} : {1}
+\t@mkdir -p $(dir $@)
+\t@echo + [CP] $@
+\t@cp {1} {0}
+{2}
+'''.format(dest, src, extra))
 
 def validatorbuild() :
     com.setprob()
@@ -80,3 +95,13 @@ DATAGEN_INPUT_TARGETS += {0}
 \t@$< < {2} > $@
 DATAGEN_OUTPUT_TARGETS += {0}
 '''.format(dataans, stddest, datain, flag))
+
+def samplegen() :
+    com.setprob()
+    for name, gen, flag, issample, desc in csv.reader(sys.stdin, delimiter='\t') :
+        if not issample : continue
+        __build_cp(__get_data_in(name), __get_sample_in(name),
+            'DATAGEN_SAMPLE_TARGETS += ' + __get_sample_in(name))
+        __build_cp(__get_data_ans(name), __get_sample_ans(name),
+            'DATAGEN_SAMPLE_TARGETS += ' + __get_sample_ans(name))
+

@@ -11,6 +11,7 @@ MODULES = {
 
     'api.mksyn.datagen' : api.mksyn.datagen,
     'api.mksyn.databuild' : api.mksyn.databuild,
+    'api.mksyn.samplegen' : api.mksyn.samplegen,
     'api.mksyn.solbuild' : api.mksyn.solbuild,
     'api.mksyn.validatorbuild' : api.mksyn.validatorbuild,
 }
