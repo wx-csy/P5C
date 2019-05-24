@@ -1,9 +1,10 @@
 from . import common as com
 import os, shutil, subprocess
+import random
 
 def add_prob(shortname) :
     com.checkparam(shortname, "[a-zA-Z][a-zA-Z0-9-]*")
-    meta = com.load_meta('contest', default=dict())
+    meta:dict = com.load_meta('contest', default=dict())
     if shortname in meta :
         com.die("problem '{0}' already exists!".format(shortname))
     meta[shortname] = {'enabled' : True, 'order' : 0}
@@ -13,7 +14,7 @@ def add_prob(shortname) :
     com.commit("add problem '{0}'".format(shortname))
 
 def remove_prob(shortname) :
-    meta = com.load_meta('contest')
+    meta:dict = com.load_meta('contest', default=dict())
     if shortname not in meta :
         com.die("problem '{0}' does not exist!".format(shortname))
     meta.pop(shortname)
@@ -22,17 +23,30 @@ def remove_prob(shortname) :
     com.commit("remove problem '{0}'".format(shortname))
 
 def ls_prob() :
-    meta = com.load_meta('contest')
+    meta:dict = com.load_meta('contest', default=dict())
     if not meta :
         print('There is no problem in this contest.')
     for shortname, desc in meta.items() :
         print('{0}\t{1}\t{2}'.format(shortname, ['', 'enabled'][desc['enabled']], desc['order']))
 
+def sort_prob(method='alphabet') :
+    meta:dict = com.load_meta('contest', default=dict())
+    keys:list = []
+    if method == 'alphabet' :
+        keys = sorted(meta.keys())
+    elif method == 'random' :
+        keys = random.shuffle(meta.keys())
+    else:
+        __usage()
+    for i, name in enumerate(keys):
+        meta[name]['order'] = i
+    com.save_meta(meta, 'contest')
+
 COMMANDS = {
     'add' :     add_prob,
     'rm'  :     remove_prob,
-    'remove' :  remove_prob,
     'ls' :      ls_prob,
+    'sort' :    sort_prob,
 }
 
 def __usage() :
@@ -40,9 +54,13 @@ def __usage() :
 '''Usage: pc prob [<command>] [<args>]
 
 Supported Commands:
-    ls                  (default) list all problems
-    add <shortname>     add a problem with specified shortname
-    rm <shortname>      remove a problem with specified shortname
+    ls                  (Default) List all problems.
+    add <shortname>     Add a problem with specified shortname.
+    rm <shortname>      Remove a problem with specified shortname.
+    sort [<method>]     Sort the problems. Methods can be:
+                            alphabet    (Default) Sort the problems in lexicographical 
+                                        order of their shortnames.
+                            random      Sort the problems randomly.
 '''
     )
     exit(0)
