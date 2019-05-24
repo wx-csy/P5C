@@ -35,6 +35,20 @@ COMMANDS = {
     'ls' :      ls_prob,
 }
 
+def __usage() :
+    print(
+'''Usage: pc prob [<command>] [<args>]
+
+Supported Commands:
+    ls                  (default) list all problems
+    add <shortname>     add a problem with specified shortname
+    rm <shortname>      remove a problem with specified shortname
+'''
+    )
+    exit(0)
+
+
 def main(cmd='ls', *args) :
     com.setroot()
+    if cmd not in COMMANDS:  __usage()
     COMMANDS[cmd](*args)

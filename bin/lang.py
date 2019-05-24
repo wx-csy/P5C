@@ -51,6 +51,18 @@ COMMANDS = {
     'remove' :  remove_lang,
 }
 
+def __usage() :
+    print(
+'''Usage: pc lang <command> [<args>]
+
+Supported Commands:
+    add <shortname>     add a language with specified shortname
+    rm <shortname>      remove a language with specified shortname
+'''
+    )
+    exit(0)
+
 def main(cmd, *args) :
     com.setroot()
+    if cmd not in COMMANDS :  __usage()
     COMMANDS[cmd](*args)
