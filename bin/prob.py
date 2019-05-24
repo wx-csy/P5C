@@ -9,7 +9,6 @@ def add_prob(shortname) :
     meta[shortname] = {'enabled' : True, 'order' : 0}
     com.save_meta(meta, 'contest')
     shutil.copytree('resource/prob-template', 'contest/' + shortname, symlinks=True)
-    print(com.gconf)
     subprocess.check_call([com.gconf['editor'], 'contest/' + shortname + '/problem.yaml'])
     com.commit("add problem '{0}'".format(shortname))
 
@@ -22,12 +21,20 @@ def remove_prob(shortname) :
     shutil.rmtree('contest/' + shortname)
     com.commit("remove problem '{0}'".format(shortname))
 
+def ls_prob() :
+    meta = com.load_meta('contest')
+    if not meta :
+        print('There is no problem in this contest.')
+    for shortname, desc in meta.items() :
+        print('{0}\t{1}\t{2}'.format(shortname, ['', 'enabled'][desc['enabled']], desc['order']))
+
 COMMANDS = {
     'add' :     add_prob,
     'rm'  :     remove_prob,
     'remove' :  remove_prob,
+    'ls' :      ls_prob,
 }
 
-def main(cmd, *args) :
+def main(cmd='ls', *args) :
     com.setroot()
     COMMANDS[cmd](*args)
