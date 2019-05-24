@@ -31,16 +31,18 @@ def ls_prob() :
 
 def sort_prob(method='alphabet') :
     meta:dict = com.load_meta('contest', default=dict())
-    keys:list = []
+    keys:list = [key for key, conf in meta.items() if conf['enabled']]
     if method == 'alphabet' :
-        keys = sorted(meta.keys())
+        keys.sort()
     elif method == 'random' :
-        keys = random.shuffle(meta.keys())
+        random.shuffle(keys)
     else:
         __usage()
     for i, name in enumerate(keys):
         meta[name]['order'] = i
     com.save_meta(meta, 'contest')
+    print('The problems are sorted in the following order:')
+    print(*keys)
 
 COMMANDS = {
     'add' :     add_prob,
