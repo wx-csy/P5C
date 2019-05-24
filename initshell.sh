@@ -1,0 +1,1 @@
+alias pc=$(pwd)/pc
