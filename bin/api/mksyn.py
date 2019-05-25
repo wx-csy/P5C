@@ -30,10 +30,10 @@ def __get_validator_dest() :
     return 'build/accessory/validator.exec'
 
 def __get_checker_src() :
-    return 'accessory/' + com.pconf["validator"]
+    return 'accessory/' + com.pconf["checker"]
 
 def __get_checker_dest() :
-    return 'build/accessory/validator.exec'
+    return 'build/accessory/checker.exec'
 
 def __build_exec(srclang, src, dest, extra='') :
     print('''{0} : {1}
@@ -52,7 +52,7 @@ def __build_cp(src, dest, extra='') :
 {2}
 '''.format(dest, src, extra))
 
-def accessorybuild() :
+def accessory() :
     com.setprob()
     src = __get_validator_src()
     dest = __get_validator_dest()
@@ -63,7 +63,7 @@ def accessorybuild() :
     srclang = lang.identify_source_lang(src)
     __build_exec(srclang, src, dest)
 
-def solbuild() :
+def solution() :
     com.setprob()
     for src in pathlib.Path('solution').iterdir() :
         srclang = lang.identify_source_lang(src)

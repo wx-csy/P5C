@@ -7,9 +7,9 @@ build/Makefile.accessory : meta.json
 
 build/Makefile.solution : $(shell find solution)
 	mkdir -p $(dir $@)
-	../../pc api.mksyn.solbuild > $@
+	../../pc api.mksyn.solution > $@
 
-build/Makefile.data : data/datalist
+build/Makefile.data-build : data/datalist
 	mkdir -p $(dir $@)
 	$< | ../../pc api.mksyn.databuild > $@
 
@@ -23,7 +23,7 @@ build/Makefile.sample-gen : data/datalist
 
 include build/Makefile.accessory
 include build/Makefile.solution
-include build/Makefile.data
+include build/Makefile.data-build
 include build/Makefile.data-gen
 include build/Makefile.sample-gen
 

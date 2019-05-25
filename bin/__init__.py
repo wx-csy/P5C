@@ -12,8 +12,8 @@ MODULES = {
     'api.mksyn.datagen' : api.mksyn.datagen,
     'api.mksyn.databuild' : api.mksyn.databuild,
     'api.mksyn.samplegen' : api.mksyn.samplegen,
-    'api.mksyn.solbuild' : api.mksyn.solbuild,
-    'api.mksyn.accessorybuild' : api.mksyn.accessorybuild,
+    'api.mksyn.solution' : api.mksyn.solution,
+    'api.mksyn.accessory' : api.mksyn.accessory,
 }
 
 def main(cmd, *args) :
