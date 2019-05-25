@@ -1,15 +1,15 @@
 .PHONY : clean ALL
 .DEFAULT_GOAL=ALL
 
-build/Makefile.validator-build : meta.json
+build/Makefile.accessory : meta.json
 	mkdir -p $(dir $@)
-	../../pc api.mksyn.validatorbuild > $@
+	../../pc api.mksyn.accessory > $@
 
-build/Makefile.sol-build : $(shell find solution)
+build/Makefile.solution : $(shell find solution)
 	mkdir -p $(dir $@)
 	../../pc api.mksyn.solbuild > $@
 
-build/Makefile.data-build : data/datalist
+build/Makefile.data : data/datalist
 	mkdir -p $(dir $@)
 	$< | ../../pc api.mksyn.databuild > $@
 
@@ -21,9 +21,9 @@ build/Makefile.sample-gen : data/datalist
 	mkdir -p $(dir $@)
 	$< | ../../pc api.mksyn.samplegen > $@
 
-include build/Makefile.validator-build
-include build/Makefile.sol-build
-include build/Makefile.data-build
+include build/Makefile.accessory
+include build/Makefile.solution
+include build/Makefile.data
 include build/Makefile.data-gen
 include build/Makefile.sample-gen
 

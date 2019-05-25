@@ -13,7 +13,7 @@ MODULES = {
     'api.mksyn.databuild' : api.mksyn.databuild,
     'api.mksyn.samplegen' : api.mksyn.samplegen,
     'api.mksyn.solbuild' : api.mksyn.solbuild,
-    'api.mksyn.validatorbuild' : api.mksyn.validatorbuild,
+    'api.mksyn.accessorybuild' : api.mksyn.accessorybuild,
 }
 
 def main(cmd, *args) :

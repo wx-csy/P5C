@@ -2,5 +2,8 @@
     "name": "Hello, world",
     "std": "std.cpp",
     "validator": "validator.cpp",
+    "validator-flags": "",
+    "checker": "default.cpp",
+    "checker-flags": "",
     "time-limit": 1
 }

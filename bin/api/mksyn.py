@@ -24,10 +24,16 @@ def __get_sample_ans(name) :
     return 'build/data/sample/' + name + '.ans'
 
 def __get_validator_src() :
-    return 'validator/' + com.pconf["validator"]
+    return 'accessory/' + com.pconf["validator"]
 
 def __get_validator_dest() :
-    return 'build/misc/validator.exec'
+    return 'build/accessory/validator.exec'
+
+def __get_checker_src() :
+    return 'accessory/' + com.pconf["validator"]
+
+def __get_checker_dest() :
+    return 'build/accessory/validator.exec'
 
 def __build_exec(srclang, src, dest, extra='') :
     print('''{0} : {1}
@@ -46,10 +52,14 @@ def __build_cp(src, dest, extra='') :
 {2}
 '''.format(dest, src, extra))
 
-def validatorbuild() :
+def accessorybuild() :
     com.setprob()
     src = __get_validator_src()
     dest = __get_validator_dest()
+    srclang = lang.identify_source_lang(src)
+    __build_exec(srclang, src, dest)
+    src = __get_checker_src()
+    dest = __get_checker_dest()
     srclang = lang.identify_source_lang(src)
     __build_exec(srclang, src, dest)
 

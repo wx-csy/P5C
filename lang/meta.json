@@ -20,5 +20,11 @@
       ".py",
       ".py3"
     ]
+  },
+  "sh": {
+    "name": "Shell Script",
+    "ext": [
+      ".sh"
+    ]
   }
 }
