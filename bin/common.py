@@ -10,6 +10,9 @@ printe = lambda *args : print(*args, file=sys.stderr)
 def loadgconf() :
     global gconf
     gconf = load_meta(getroot() + "/config.json")
+    pgconf:dict = load_meta(getroot() + "/private/config.json", default=dict())
+    for k, v in pgconf.items() :
+        gconf[k] = v
 
 def getroot() :
     path = pathlib.Path.cwd()
@@ -25,7 +28,7 @@ def setroot() :
     root = getroot()
     if not root : die('P5C: not a p5c repository')
     os.chdir(root)
-    gconf = load_meta("config.json")
+    loadgconf()
 
 def getprob():
     path = pathlib.Path.cwd()
@@ -38,12 +41,12 @@ def getprob():
 
 
 def setprob():
-    global pconf, gconf
+    global pconf
     pn = getprob()
     if not pn: die('P5C: not a p5c problem directory')
     os.chdir(pn[0])
     pconf = load_meta(pn[0], default=dict())
-    gconf = load_meta(getroot() + "/config.json")
+    loadgconf()
     return pn[1]
 
 def checkparam(s, pat=IDENTIFIER_PAT) :
