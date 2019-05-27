@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt,twoside]{article}
 \usepackage[left=2.0cm, right=2.0cm, top=2.0cm, bottom=2.0cm]{geometry}
+\usepackage{import}
 \usepackage{indentfirst}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{multirow}
@@ -21,7 +22,9 @@
     \newcommand{\divsel}[2]{#2}
 \fi
 
+\lhead{}
 \chead{\large \textbf{2019 Nowcoder Multi-University Summer Camp, Round 7}}
+\rhead{}
 \lfoot{\Alph{ProblemNo}. \ProblemName}
 \cfoot{}
 \rfoot{\thepage}
@@ -72,15 +75,16 @@
     \renewcommand{\ProblemName}{#1}
     \setcounter{ExampleNo}{0}
     \begin{center}
-        \huge{\Alph{ProblemNo}. \ProblemName} \\ [0.8cm]
-        \large{\textbf{Time Limit: #2}} \\ [1cm]
+        \huge{Problem \Alph{ProblemNo}} \\[0.2cm]
+        \LARGE{\ProblemName} \\[0.3cm]
+        \large{Time limit: #2 \ifnum#2=1 second \else seconds \fi} \\ [1cm]
     \end{center}
 }{
     \clearpage
     \ifodd\value{page}
     \else
     \vspace*{\fill}
-    \begin{center}\textbf{\Large this page intentionally left blank}\end{center}
+    \begin{center}{\Large This page is intentionally left blank.}\end{center}
     \vspace*{\fill}
     \clearpage
     \fi
