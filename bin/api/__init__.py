@@ -1,1 +1,1 @@
-from . import mksyn
+from . import mksyn, texsyn

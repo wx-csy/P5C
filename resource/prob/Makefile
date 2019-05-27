@@ -1,6 +1,6 @@
 SHORTNAME	:= $(shell basename $(shell pwd))
 
-.PHONY : data sample cf clean ALL
+.PHONY : data sample statement cf clean ALL
 .DEFAULT_GOAL=ALL
 
 build/Makefile.accessory : meta.json
@@ -29,14 +29,16 @@ include build/Makefile.data-build
 include build/Makefile.data-gen
 include build/Makefile.sample-gen
 
-data : $(DATAGEN_INPUT_TARGETS) $(DATAGEN_OUTPUT_TARGETS)
-
-sample : $(DATAGEN_SAMPLE_TARGETS)
-
 build/statement/statement.pdf : $(shell find statement -type f)
 	mkdir -p $(dir $@)
 	xelatex --output-directory=$(dir $@) '\input{../../resource/statement/stat.tex}\begin{document}\subimport{statement/}{stat}\end{document}'
 	xelatex --output-directory=$(dir $@) '\input{../../resource/statement/stat.tex}\begin{document}\subimport{statement/}{stat}\end{document}'
+
+data : $(DATAGEN_INPUT_TARGETS) $(DATAGEN_OUTPUT_TARGETS)
+
+sample : $(DATAGEN_SAMPLE_TARGETS)
+
+statement : build/statement/statement.pdf
 
 CF_TARGET	= build/package/$(SHORTNAME).zip
 cf : data

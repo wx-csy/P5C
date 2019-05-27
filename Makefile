@@ -1,11 +1,13 @@
-.PHONY : statement
+.PHONY : statement clean
 
-statement : build/statement/stat.pdf
+statement : build/statement/statement.pdf
 
-build/statement/stat.pdf : build/statement/stat.tex
-	xelatex $<
-	xelatex $<
-	xelatex $<
+build/statement/statement.pdf : $(shell find contest -type f)
+	mkdir -p $(dir $@)
+	./pc api.texsyn.contest > build/statement/statement.tex
+	xelatex --output-directory=$(dir $@) build/statement/statement.tex
+	xelatex --output-directory=$(dir $@) build/statement/statement.tex
+	xelatex --output-directory=$(dir $@) build/statement/statement.tex
 
-build/statement/stat.tex : $(
-	
+clean :
+	rm -rf build

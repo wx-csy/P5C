@@ -14,6 +14,9 @@ def loadgconf() :
     for k, v in pgconf.items() :
         gconf[k] = v
 
+def isroot() :
+    return os.path.exists('.p5c')
+
 def getroot() :
     path = pathlib.Path.cwd()
     this = './'

@@ -2,6 +2,10 @@ from . import common as com
 import os, shutil, subprocess
 import random
 
+def load_problist() :
+    assert com.isroot()
+    return com.load_meta('contest', default=dict())
+
 def add_prob(shortname) :
     com.checkparam(shortname, "[a-zA-Z][a-zA-Z0-9-]*")
     meta:dict = com.load_meta('contest', default=dict())
