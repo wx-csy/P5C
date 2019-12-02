@@ -23,6 +23,13 @@ def __get_sample_in(name) :
 def __get_sample_ans(name) :
     return 'build/data/sample/' + name + '.ans'
 
+def __get_secret_in(name) :
+    return 'build/data/sample/' + name + '.in'
+
+def __get_secret_ans(name) :
+    return 'build/data/sample/' + name + '.ans'
+
+
 def __get_validator_src() :
     return 'accessory/' + com.pconf["validator"]
 
@@ -105,13 +112,14 @@ DATAGEN_INPUT_TARGETS += {0}
 \t@$< < {2} > $@
 DATAGEN_OUTPUT_TARGETS += {0}
 '''.format(dataans, stddest, datain, flag))
-
-def samplegen() :
-    com.setprob()
-    for name, gen, flag, issample, desc in csv.reader(sys.stdin, delimiter='\t') :
-        if not issample : continue
-        __build_cp(__get_data_in(name), __get_sample_in(name),
-            'DATAGEN_SAMPLE_TARGETS += ' + __get_sample_in(name))
-        __build_cp(__get_data_ans(name), __get_sample_ans(name),
-            'DATAGEN_SAMPLE_TARGETS += ' + __get_sample_ans(name))
+        if issample :
+            __build_cp(__get_data_in(name), __get_sample_in(name),
+                'DATAGEN_SAMPLE_TARGETS += ' + __get_sample_in(name))
+            __build_cp(__get_data_ans(name), __get_sample_ans(name),
+                'DATAGEN_SAMPLE_TARGETS += ' + __get_sample_ans(name))
+        else :
+            __build_cp(__get_data_in(name), __get_secret_in(name),
+                'DATAGEN_SECRET_TARGETS += ' + __get_secret_in(name))
+            __build_cp(__get_data_ans(name), __get_secret_ans(name),
+                'DATAGEN_SECRET_TARGETS += ' + __get_secret_ans(name))
 
